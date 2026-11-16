@@ -1,4 +1,5 @@
 # Files kept in the repo but not needed on the live site
-cv/
-README.md
-.gitignore
+# Leading "/" = root folder only (otherwise "cv/" would also hide assets/cv/ PDFs)
+/cv/
+/README.md
+/.gitignore
