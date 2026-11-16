@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>ADNAN_BISEYRINI_CV</title>
+  <!--
+    قالب السيرة الذاتية — يقرأ البيانات من ../data.js
+    النسخة الإنجليزية: cv.html?lang=en   النسخة العربية: cv.html?lang=ar
+    لإعادة توليد ملفَّي PDF بعد تعديل البيانات شغّل:  cv/build-cv.ps1
+  -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    @page { size: A4; margin: 0; }
+    :root { --ink: #111827; --muted: #4b5563; --line: #e5e7eb; --accent: #5b4ce0; --accent-2: #0891b2; }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; background: #fff; }
+    body { font: 9.3pt/1.45 "Inter", "Segoe UI", Arial, sans-serif; color: var(--ink); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    html[lang="ar"] body { font-family: "IBM Plex Sans Arabic", "Inter", "Segoe UI", sans-serif; font-size: 9.1pt; line-height: 1.5; }
+    .page { width: 210mm; min-height: 297mm; padding: 10mm 15mm 9mm; position: relative; }
+    .page::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 5px; background: linear-gradient(90deg, var(--accent), var(--accent-2)); }
+    [dir="rtl"] .page::before { background: linear-gradient(-90deg, var(--accent), var(--accent-2)); }
+    a { color: inherit; text-decoration: none; }
+    .ltr { direction: ltr; unicode-bidi: isolate; }
+
+    header { display: flex; justify-content: space-between; align-items: flex-end; gap: 20px; padding-bottom: 10px; border-bottom: 1.5px solid var(--ink); }
+    h1 { margin: 0; font-size: 25pt; font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; }
+    html[lang="ar"] h1 { font-weight: 700; letter-spacing: 0; font-size: 24pt; line-height: 1.3; }
+    .role { margin-top: 3px; font-size: 12pt; font-weight: 600; color: var(--accent); }
+    .contact { text-align: end; font-size: 8.8pt; color: var(--muted); line-height: 1.65; }
+    .contact b { color: var(--ink); font-weight: 600; }
+    .avail { margin-top: 8px; font-size: 8.8pt; color: var(--muted); }
+    .avail strong { color: var(--accent-2); font-weight: 600; }
+
+    section { margin-top: 9px; }
+    h2 { margin: 0 0 7px; font-size: 9pt; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); display: flex; align-items: center; gap: 10px; }
+    html[lang="ar"] h2 { font-size: 10.5pt; letter-spacing: 0; }
+    h2::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+    p { margin: 0 0 5px; }
+    .summary p { color: #1f2937; }
+
+    .skills { display: grid; grid-template-columns: 1fr; gap: 3px; margin: 0; }
+    .skills div { display: grid; grid-template-columns: 38mm 1fr; }
+    .skills dt { font-weight: 600; }
+    .skills dd { margin: 0; color: var(--muted); }
+    [dir="rtl"] .skills dd { direction: ltr; text-align: right; unicode-bidi: isolate; }
+
+    .item { margin-bottom: 6px; break-inside: avoid; }
+    .item-head { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
+    .two .item-head { flex-direction: column; gap: 0; }
+    .two .item p { font-size: 8.9pt; line-height: 1.45; }
+    html[lang="ar"] .two .item p { font-size: 8.7pt; line-height: 1.5; }
+    .item-title { font-weight: 700; font-size: 10pt; }
+    .item-sub { color: var(--muted); }
+    .item-meta { font-size: 8.6pt; color: var(--muted); white-space: nowrap; }
+    .item p { margin: 2px 0 0; color: #374151; }
+    .tech { font-size: 8.4pt; color: var(--accent-2); margin-top: 1px; }
+    [dir="rtl"] .tech { direction: ltr; text-align: right; unicode-bidi: isolate; }
+    .tag { display: inline-block; font-size: 7.4pt; font-weight: 600; padding: 0 6px; border-radius: 3px; border: 1px solid currentColor; margin-inline-start: 6px; vertical-align: 1px; color: var(--accent); }
+    ul { margin: 2px 0 0; padding-inline-start: 16px; color: #374151; }
+
+    .two { display: grid; grid-template-columns: 1fr 1fr; gap: 0 22px; }
+    .langs { display: flex; flex-direction: column; gap: 2px; }
+    .langs span { color: var(--muted); }
+    .langs b { color: var(--ink); font-weight: 600; }
+    footer { position: absolute; bottom: 5mm; left: 16mm; right: 16mm; font-size: 7.6pt; color: #9ca3af; display: flex; justify-content: space-between; }
+  </style>
+</head>
+<body>
+  <div class="page" id="cv"></div>
+
+  <script src="../data.js"></script>
+  <script>
+    (() => {
+      const L = new URLSearchParams(location.search).get("lang") === "ar" ? "ar" : "en";
+      document.documentElement.lang = L;
+      document.documentElement.dir = L === "ar" ? "rtl" : "ltr";
+
+      const T = {
+        en: {
+          tagline: "Laravel &amp; Filament",
+          avail: "<strong>Available for remote work</strong> · Open to relocating to Idlib, Syria",
+          profile: "Profile", skills: "Skills", projects: "Projects", experience: "Experience",
+          education: "Education", languages: "Languages", footer: "Curriculum Vitae",
+          soft: ["Soft Skills", "Analytical thinking · Requirements gathering · Communication · Teamwork"],
+          academic: "Academic", live: "Live",
+        },
+        ar: {
+          tagline: "Laravel و Filament",
+          avail: "<strong>متاح للعمل عن بُعد</strong> · مستعد للانتقال إلى إدلب، سوريا",
+          profile: "نبذة شخصية", skills: "المهارات", projects: "المشاريع", experience: "الخبرات",
+          education: "التعليم", languages: "اللغات", footer: "السيرة الذاتية",
+          soft: ["المهارات الشخصية", "التفكير التحليلي · جمع المتطلبات · التواصل الفعّال · العمل ضمن فريق"],
+          academic: "أكاديمي", live: "منشور",
+        },
+      }[L];
+
+      const D = PORTFOLIO, P = D.profile;
+      const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+      const host = (u) => u.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "").replace(/\.git$/, "").replace(/\/admin.*/, "");
+      const social = (t) => P.socials.find((s) => s.type === t)?.url;
+      const site = "adnan-biseyrini.com";
+      const ltr = (html) => `<span class="ltr">${html}</span>`;
+
+      const projects = D.projects.map((p) => {
+        const label = p.category === "academic" ? T.academic : p.status ? p.status[L] : p.featured ? T.live : "";
+        const link = p.demo || p.code;
+        return `
+          <div class="item">
+            <div class="item-head">
+              <span class="item-title">${esc(p.title[L])}${label ? `<span class="tag">${esc(label)}</span>` : ""}</span>
+              ${link ? `<a class="item-meta ltr" href="${esc(link)}">${esc(host(link))}</a>` : ""}
+            </div>
+            <p>${esc(p.description[L])}</p>
+            <div class="tech">${p.tags.map(esc).join(" · ")}</div>
+          </div>`;
+      }).join("");
+
+      const work = D.experience.filter((e) => e.period.en !== "Education");
+      const edu = D.experience.filter((e) => e.period.en === "Education");
+
+      document.getElementById("cv").innerHTML = `
+        <header>
+          <div>
+            <h1>${esc(P.name[L])}</h1>
+            <div class="role">${esc(P.role[L])} · ${T.tagline}</div>
+            <div class="avail">${T.avail}</div>
+          </div>
+          <div class="contact">
+            <div>${esc(P.location[L])}</div>
+            <div><a class="ltr" href="mailto:${esc(P.email)}"><b>${esc(P.email)}</b></a></div>
+            <div>${ltr(`<a href="https://${site}">${site}</a>`)}</div>
+            <div>${ltr(`<a href="${esc(social("linkedin"))}">${esc(host(social("linkedin")))}</a>`)}</div>
+            <div>${ltr(`<a href="${esc(social("github"))}">${esc(host(social("github")))}</a> · <a href="${esc(social("telegram"))}">Telegram: @al_bceriny</a>`)}</div>
+          </div>
+        </header>
+
+        <section class="summary">
+          <h2>${T.profile}</h2>
+          ${D.about[L].slice(0, 2).map((x) => `<p>${esc(x)}</p>`).join("")}
+        </section>
+
+        <section>
+          <h2>${T.skills}</h2>
+          <dl class="skills">
+            ${D.skills.map((g) => `<div><dt>${esc(g.title[L])}</dt><dd>${g.items.map(esc).join(" · ")}</dd></div>`).join("")}
+            <div><dt>${T.soft[0]}</dt><dd style="direction:inherit;text-align:start">${T.soft[1]}</dd></div>
+          </dl>
+        </section>
+
+        <section>
+          <h2>${T.projects}</h2>
+          <div class="two">${projects}</div>
+        </section>
+
+        <section>
+          <h2>${T.experience}</h2>
+          ${work.map((e) => `
+            <div class="item">
+              <div class="item-head">
+                <span><span class="item-title">${esc(e.role[L])}</span>${e.company[L] ? ` <span class="item-sub">— ${esc(e.company[L])}</span>` : ""}</span>
+                <span class="item-meta">${esc(e.period[L])}</span>
+              </div>
+              ${e.points[L].length ? `<ul>${e.points[L].map((x) => `<li>${esc(x)}</li>`).join("")}</ul>` : ""}
+            </div>`).join("")}
+        </section>
+
+        <div class="two">
+          <section>
+            <h2>${T.education}</h2>
+            ${edu.map((e) => `
+              <div class="item">
+                <div class="item-title">${esc(e.role[L])}</div>
+                <div class="item-sub">${esc(e.company[L])}</div>
+                <div class="item-sub">${e.points[L].map(esc).join(" · ")}</div>
+              </div>`).join("")}
+          </section>
+          <section>
+            <h2>${T.languages}</h2>
+            <div class="langs">
+              ${D.languages.map((l) => `<span><b>${esc(l.name[L])}</b> — ${esc(l.level[L])}</span>`).join("")}
+            </div>
+          </section>
+        </div>
+
+        <footer><span>${esc(P.name[L])} — ${T.footer}</span><span class="ltr">${site}</span></footer>`;
+    })();
+  </script>
+</body>
+</html>

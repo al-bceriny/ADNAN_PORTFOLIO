@@ -1,0 +1,4 @@
+# Files kept in the repo but not needed on the live site
+cv/
+README.md
+.gitignore
