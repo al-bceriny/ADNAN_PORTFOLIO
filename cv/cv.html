@@ -101,8 +101,14 @@
       const site = "adnan-biseyrini.com";
       const ltr = (html) => `<span class="ltr">${html}</span>`;
 
-      // cv: false في data.js يُخفي المشروع من السيرة الذاتية فقط (يبقى في الموقع)
-      const projects = D.projects.filter((p) => p.cv !== false).map((p) => {
+      // خيارات السيرة الذاتية في data.js (لا تؤثر على الموقع):
+      //   cv: false            يُخفي المشروع من السيرة الذاتية
+      //   cvInsteadOf: "OBS"   يضع المشروع مكان المشروع صاحب الاختصار short المحدد
+      //   cvDescription        وصف أقصر يُستخدم في السيرة الذاتية بدل description
+      const cvProjects = D.projects.flatMap((p) =>
+        p.cv === false || p.cvInsteadOf ? [] : [D.projects.find((q) => q.cvInsteadOf === p.short) || p]
+      );
+      const projects = cvProjects.map((p) => {
         const label = p.category === "academic" ? T.academic : p.status ? p.status[L] : p.featured ? T.live : "";
         const link = p.demo || p.code;
         return `
@@ -111,7 +117,7 @@
               <span class="item-title">${esc(p.title[L])}${label ? `<span class="tag">${esc(label)}</span>` : ""}</span>
               ${link ? `<a class="item-meta ltr" href="${esc(link)}">${esc(host(link))}</a>` : ""}
             </div>
-            <p>${esc(p.description[L])}</p>
+            <p>${esc((p.cvDescription || p.description)[L])}</p>
             <div class="tech">${p.tags.map(esc).join(" · ")}</div>
           </div>`;
       }).join("");

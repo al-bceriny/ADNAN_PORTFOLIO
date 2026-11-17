@@ -117,8 +117,12 @@ const PORTFOLIO = {
         ar: "متجر عطور وإكسسوارات عربي على ووردبريس وووكومرس، بقالب مخصص بهوية المحل ولوحة تحكم مبسّطة لصاحب محل بلا خبرة تقنية: ملخص المبيعات، تعديل الأسعار والمخزون من جدول واحد، واستيراد المنتجات من إكسل مع معاينة قبل الحفظ.",
         en: "An Arabic perfume & accessories store on WordPress and WooCommerce, with a custom branded theme and a simplified dashboard for a non-technical shop owner: sales overview, one-table price & stock editing, and an Excel product importer with preview.",
       },
-      // لا يظهر في السيرة الذاتية (الصفحة الواحدة ممتلئة) — احذف السطر لإظهاره
-      cv: false,
+      // في السيرة الذاتية فقط: يحلّ محل مشروع OBS (يبقى OBS ظاهراً في الموقع)
+      cvInsteadOf: "OBS",
+      cvDescription: {
+        ar: "متجر عطور عربي على ووكومرس بقالب مخصص ولوحة تحكم مبسّطة لصاحب المحل: ملخص المبيعات، تعديل الأسعار والمخزون، واستيراد المنتجات من إكسل.",
+        en: "An Arabic WooCommerce perfume store with a custom theme and a simplified owner dashboard: sales overview, price & stock editing, and Excel import.",
+      },
       category: "professional",
       tags: ["WordPress", "WooCommerce", "PHP", "Docker", "RTL"],
       demo: "",
