@@ -46,7 +46,7 @@ const PORTFOLIO = {
   },
 
   stats: [
-    { value: "6", label: { ar: "مشاريع ويب", en: "Web projects" } },
+    { value: "7", label: { ar: "مشاريع ويب", en: "Web projects" } },
     { value: "4+", label: { ar: "سنوات من العمل التطوعي", en: "Years of volunteering" } },
     { value: "3", label: { ar: "لغات", en: "Languages" } },
   ],
@@ -102,6 +102,27 @@ const PORTFOLIO = {
       demo: "https://clinic-adnan-saas.up.railway.app/admin/demo-dental-clinic",
       code: "",
       featured: true,
+    },
+    {
+      title: { ar: "بيت المسك — متجر عطور إلكتروني", en: "Bayt Al-Misk — Perfume E-commerce Store" },
+      short: "BAM",
+      images: [
+        "assets/projects/bayt-almisk-1.jpg",
+        "assets/projects/bayt-almisk-2.jpg",
+        "assets/projects/bayt-almisk-3.jpg",
+        "assets/projects/bayt-almisk-4.jpg",
+        "assets/projects/bayt-almisk-5.jpg",
+      ],
+      description: {
+        ar: "متجر عطور وإكسسوارات عربي على ووردبريس وووكومرس، بقالب مخصص بهوية المحل ولوحة تحكم مبسّطة لصاحب محل بلا خبرة تقنية: ملخص المبيعات، تعديل الأسعار والمخزون من جدول واحد، واستيراد المنتجات من إكسل مع معاينة قبل الحفظ.",
+        en: "An Arabic perfume & accessories store on WordPress and WooCommerce, with a custom branded theme and a simplified dashboard for a non-technical shop owner: sales overview, one-table price & stock editing, and an Excel product importer with preview.",
+      },
+      // لا يظهر في السيرة الذاتية (الصفحة الواحدة ممتلئة) — احذف السطر لإظهاره
+      cv: false,
+      category: "professional",
+      tags: ["WordPress", "WooCommerce", "PHP", "Docker", "RTL"],
+      demo: "",
+      code: "https://github.com/al-bceriny/bayt-almisk-store",
     },
     {
       title: { ar: "لوحة إدارة المكتبة", en: "Library Control Panel" },

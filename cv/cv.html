@@ -101,7 +101,8 @@
       const site = "adnan-biseyrini.com";
       const ltr = (html) => `<span class="ltr">${html}</span>`;
 
-      const projects = D.projects.map((p) => {
+      // cv: false في data.js يُخفي المشروع من السيرة الذاتية فقط (يبقى في الموقع)
+      const projects = D.projects.filter((p) => p.cv !== false).map((p) => {
         const label = p.category === "academic" ? T.academic : p.status ? p.status[L] : p.featured ? T.live : "";
         const link = p.demo || p.code;
         return `
